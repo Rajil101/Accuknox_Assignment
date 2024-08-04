@@ -1,4 +1,4 @@
-# Accuknox_Assignment
+# Accuknox_Assignment 1
 
 # Objective
 containerize and deploy the Wisecow application through docker, make Wisecow application as Kubertnetess service.
@@ -30,12 +30,27 @@ containerize and deploy the Wisecow application through docker, make Wisecow app
 >vim Dockerfile
 
 #Build the Docker image:
->docker build -t <dockerhub-username>/my-wisecow:latest .
+>docker build -t <dockerhub_username>/<docker_repo_name>:latest .
+
+
+![Screenshot 2024-08-04 204241](https://github.com/user-attachments/assets/d51bb7e8-4709-4061-b137-08edd5eaed34)
+
+
+
 
 #Run docker command for image creation at port 4499
-docker run -d -p localhost:4499 <dockerhub-username>/<repo-name>:latest
+docker run -d -p 8000:4499 <dockerhub_username>/<docker_repo_name>:latest
 
-OR Expose through >EXPOSE 4499 command.
+
+![Screenshot 2024-08-04 214358](https://github.com/user-attachments/assets/9689f6e5-01e8-4118-9ca6-031eee62cd60)
+
+
+
+
+![Screenshot 2024-08-04 214330](https://github.com/user-attachments/assets/e675e5a1-cab9-4302-bd2c-14e9b540e0f1)
+
+
+*Here I port forwarded the wisecow application to localhost from 4499. 
 
 Login to your docker account and push the image.
 >docker login <registry_address>
@@ -44,12 +59,19 @@ for e.g   >sudo docker login docker.io , the registry address is docker.io in de
 
 #Push the Docker image:
 
->docker push <dockerhub-username>/<repo-name>:latest
+>docker push <dockerhub_username>/<docker_repo_name>:latest
+
+
+![Screenshot 2024-08-04 211631](https://github.com/user-attachments/assets/a55c70a7-a847-43ec-a04d-76a1a77c106b)
+
 
 *Password is stored in unencrypted on docker config file.
 
 #Unlog from docker Registry
 >docker logout <registry_address>
+
+#Stop the docker if required.
+>sudo systemctl stop docker
 
 
 ## Cluster Creation for Ks8 pods 
