@@ -13,6 +13,10 @@ containerize and deploy the Wisecow application through docker, make Wisecow app
 
 >git clone https://github.com/nyrahul/wisecow
 
+# Prerequsite
+
+#Run the command for insalation of dockerfile prerequsite.
+>sudo apt install fortune-mod cowsay -y
 
 
 ## Install Docker
@@ -22,21 +26,30 @@ containerize and deploy the Wisecow application through docker, make Wisecow app
 #Start docker
 >sudo systemctl start docker
 
+#Add or create dockerfile with command specified in the existing repo.
+>vim Dockerfile
+
 #Build the Docker image:
->docker build -t <dockerhub-username>/wisecow-docker:latest .
+>docker build -t <dockerhub-username>/my-wisecow:latest .
 
 #Run docker command for image creation at port 4499
-docker run -d -p localhost:4499 <dockerhub-username>/wisecow-docker:latest
+docker run -d -p localhost:4499 <dockerhub-username>/<repo-name>:latest
 
 OR Expose through >EXPOSE 4499 command.
 
 Login to your docker account and push the image.
+>docker login <registry_address>
 
+for e.g   >sudo docker login docker.io , the registry address is docker.io in default.
 
 #Push the Docker image:
 
->docker push <dockerhub-username>/wisecow-docker:latest
+>docker push <dockerhub-username>/<repo-name>:latest
 
+*Password is stored in unencrypted on docker config file.
+
+#Unlog from docker Registry
+>docker logout <registry_address>
 
 
 ## Cluster Creation for Ks8 pods 
