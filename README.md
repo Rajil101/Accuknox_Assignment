@@ -19,7 +19,8 @@ containerize and deploy the Wisecow application through docker, make Wisecow app
 
 >Visit officaial site to download > [officaial site](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
-
+#Start docker
+>sudo systemctl start docker
 
 #Build the Docker image:
 >docker build -t <dockerhub-username>/wisecow-docker:latest .
